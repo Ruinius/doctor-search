@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @doctor.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @doctor.last_name %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @doctor.street %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @doctor.unit %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @doctor.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @doctor.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @doctor.zip %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @doctor.phone %>
+</p>
+
+<p>
+  <strong>Specialty:</strong>
+  <%= @doctor.specialty %>
+</p>
+
+<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+<%= link_to 'Back', doctors_path %>
