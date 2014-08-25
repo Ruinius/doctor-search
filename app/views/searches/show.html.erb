@@ -1,0 +1,6 @@
+Search results
+<ol>
+<% @doctors.each do |doctor| %>
+  <li><%= "#{doctor.last_name}, #{doctor.first_name}" %>
+<% end %></li>
+</ol>
