@@ -2,5 +2,6 @@ Search results
 <ol>
 <% @doctors.each do |doctor| %>
   <li><%= "#{doctor.last_name}, #{doctor.first_name}" %>
+  <p><%= doctor.full_address %></p>
 <% end %></li>
 </ol>
