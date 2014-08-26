@@ -8,7 +8,8 @@ class SearchesController < ApplicationController
     elsif !params[:zipcode].blank?
       search = Search.new(params[:zipcode])
     else
-      redirect_to search_path
+      flash[:notice] = "Please enter an address"
+      redirect_to search_path and return
     end
     @doctors = search.nearby_doctors
     render 'show'

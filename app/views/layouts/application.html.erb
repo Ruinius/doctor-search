@@ -8,6 +8,9 @@
 </head>
 <body>
 <%= link_to 'Home', root_url %>
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
 <%= yield %>
 
 </body>
