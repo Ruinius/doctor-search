@@ -3,5 +3,6 @@ Search results
 <% @doctors.each do |doctor| %>
   <li><%= "#{doctor.last_name}, #{doctor.first_name}" %>
   <p><%= doctor.full_address %></p>
+  <p>Distance: <%= doctor.distance.round(2) %> miles</p>
 <% end %></li>
 </ol>
