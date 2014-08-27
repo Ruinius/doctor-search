@@ -9,9 +9,9 @@ class SearchesController < ApplicationController
       render :json => [{:notice => "Please enter an address"}]
     else
       if !params[:address].blank?
-        search = Search.new(params[:address],params[:specialty])
+        search = Search.new(params[:address],params[:specialty][:id])
       elsif !params[:zipcode].blank?
-        search = Search.new(params[:zipcode],params[:specialty])  
+        search = Search.new(params[:zipcode],params[:specialty][:id])  
       end
       doctors_json = search.nearby_doctors.collect do |doctor|
         {

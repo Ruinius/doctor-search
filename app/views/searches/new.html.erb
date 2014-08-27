@@ -14,7 +14,8 @@
   </p>
   <p>
   <%= label_tag :specialty, "Specialty (optional):"%>
-  <%= text_field_tag :specialty %>
+  <%# text_field_tag :specialty %>
+  <%= collection_select(:specialty, :id, Specialty.all, :id, :name, :prompt => true) %>
   </p>
   <%= submit_tag "Search", :class => "btn btn-primary" %>
 <% end %>

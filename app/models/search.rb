@@ -1,15 +1,15 @@
 class Search 
-  def initialize(address, specialty = "")
+  def initialize(address, specialty_id = 0)
     @address = address
-    @specialty = specialty
+    @specialty_id = specialty_id.to_i
   end
 
   def nearby_doctors()
     # Doctors within 5 miles
-    if @specialty.blank?
+    if @specialty_id.zero?
       Doctor.near(self.class.coordinates(@address), 5).sort_by {|d| d.distance}
     else
-      Doctor.find_by(:specialty => @specialty).near(self.class.coordinates(@address), 5).sort_by {|d| d.distance}
+      Doctor.joins(:specialties).where(:specialties => {:id => @specialty_id}).near(self.class.coordinates(@address), 5).sort_by {|d| d.distance}
     end
     
   end
