@@ -1,11 +1,4 @@
 $( document ).ready(function(){
-  var $title = $('h2');
-  if ($title.text() == "New physician search"){
-    $('#doctor_results').hide();
-  }
-});
-
-$( document ).ready(function(){
   $('#search_again').click(function(e){
     e.preventDefault();
     var $title = $('h2');
@@ -30,6 +23,7 @@ $( document ).ready(function(){
       dataType: 'script',
       success: function(d){
         var response = JSON.parse(d);
+        debugger;
         if (response[0].hasOwnProperty("notice")){
           $('div.container').prepend("<p class=notice>" + response[0]["notice"]);
         } else {
@@ -41,11 +35,12 @@ $( document ).ready(function(){
           var $results = $('#doctor_results > ol');
           $results.html("");
           for (var i = 0; i < response.length; i++){
-            $results.append("<li>" + response[i]["last_name"] + ", " + response[i]["first_name"]);
+            $results.append("<li>" + response[i]["last_name"] + ", " + response[i]["first_name"] + "</li>");
             $results.append("<p>" + response[i]["full_address"] + "</p>");
             $results.append("<p>Distance: " + response[i]["distance"] + " miles</p>");
-            $results.append("</li>")
           }
+          $('#doctor_results').append("<a id=search_again href='/'>");
+          $('#doctor_results > a').text("Search again");
           $('#doctor_results').show();
         }
       },
