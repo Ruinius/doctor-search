@@ -10,8 +10,8 @@ $( document ).ready(function(){
     e.preventDefault();
     var $title = $('h2');
     var $form = $('form');
-    $form.find('#address').text("");
-    $form.find('#zipcode').val("")
+    $form.find('#address').val("");
+    $form.find('#zipcode').val("");
     $title.text("New physician search");
     $form.show();
     $('#doctor_results').hide();
