@@ -1,4 +1,6 @@
 class Doctor < ActiveRecord::Base
+  has_many :doctor_specialties
+  has_many :specialties, through: :doctor_specialties
   geocoded_by :full_address
   after_validation :geocode
   

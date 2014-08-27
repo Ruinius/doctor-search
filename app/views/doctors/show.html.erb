@@ -42,7 +42,7 @@
 
 <p>
   <strong>Specialty:</strong>
-  <%= @doctor.specialty %>
+  <%= @doctor.specialties.join(", ") %>
 </p>
 
 <%= link_to 'Edit', edit_doctor_path(@doctor) %> |

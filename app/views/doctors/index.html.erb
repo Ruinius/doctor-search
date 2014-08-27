@@ -27,7 +27,7 @@
         <td><%= doctor.state %></td>
         <td><%= doctor.zip %></td>
         <td><%= doctor.phone %></td>
-        <td><%= doctor.specialty %></td>
+        <td><%= doctor.specialties.collect {|s| s.name}.join(", ") %></td>
         <td><%= link_to 'Show', doctor %></td>
         <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
         <td><%= link_to 'Destroy', doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -38,5 +38,4 @@
 
 <br>
 
-<%= link_to 'New Doctor', new_doctor_path %>
-<%= link_to 'Search by Address', search_path %>
+<%= link_to 'Add new doctor', new_doctor_path %>

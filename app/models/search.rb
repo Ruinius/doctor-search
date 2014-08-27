@@ -1,11 +1,18 @@
 class Search 
-  def initialize(address)
+  def initialize(address, specialty = "")
     @address = address
+    @specialty = specialty
   end
 
   def nearby_doctors()
     # Doctors within 5 miles
-    Doctor.near(self.class.coordinates(@address), 5).sort_by {|d| d.distance}
+    if @specialty.blank?
+      Doctor.near(self.class.coordinates(@address), 5).sort_by {|d| d.distance}
+    else
+      binding.pry
+      Doctor.find_by(:specialty => @specialty).near(self.class.coordinates(@address), 5).sort_by {|d| d.distance}
+    end
+    
   end
 
   def self.coordinates(address)
