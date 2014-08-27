@@ -4,6 +4,7 @@ class DoctorsController < ApplicationController
   # GET /doctors
   # GET /doctors.json
   def index
+    @active = :list
     @doctors = Doctor.all
   end
 

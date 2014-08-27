@@ -1,8 +1,10 @@
 class SearchesController < ApplicationController
   def new
+    @active = :search
   end
 
   def create
+    @active = :search
     if !params[:address].blank?
       search = Search.new(params[:address])
     elsif !params[:zipcode].blank?
