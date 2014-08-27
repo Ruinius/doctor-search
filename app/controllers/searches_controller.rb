@@ -5,16 +5,24 @@ class SearchesController < ApplicationController
 
   def create
     @active = :search
-    if !params[:address].blank?
-      search = Search.new(params[:address])
-    elsif !params[:zipcode].blank?
-      search = Search.new(params[:zipcode])
+    if params[:address].blank? && params[:zipcode].blank?
+      render :json => [{:notice => "Please enter an address"}]
     else
-      flash[:notice] = "Please enter an address"
-      redirect_to search_path and return
+      if !params[:address].blank?
+        search = Search.new(params[:address])
+      elsif !params[:zipcode].blank?
+        search = Search.new(params[:zipcode])  
+      end
+      doctors_json = search.nearby_doctors.collect do |doctor|
+        {
+          :first_name => doctor.first_name,
+          :last_name => doctor.last_name,
+          :full_address => doctor.full_address,
+          :distance => doctor.distance.round(2)
+        }
+      end
+      render :json => doctors_json
     end
-    @doctors = search.nearby_doctors
-    render 'show'
   end
 
 end

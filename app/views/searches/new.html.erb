@@ -1,17 +1,22 @@
 <div class="search">
 <h2>New physician search</h2>
-<%= form_tag(method: "get") do %>
+<%= form_tag({:action => :create}) do %>
   <p>
-  <%= label_tag(:address, "Search by patient address:") %>
-  <%= text_field_tag(:address) %>
+  <%= label_tag :address, "Search by patient address:" %>
+  <%= text_field_tag :address %>
   </p>
   <p class="form-or">
   OR
   </p>
   <p>
-  <%= label_tag(:zipcode, "zipcode:") %>
-  <%= text_field_tag(:zipcode) %>
+  <%= label_tag :zipcode, "zip code:", :id => "zip-code-tag" %>
+  <%= text_field_tag :zipcode %>
   </p>
-  <%= submit_tag"Search", :class => "btn btn-primary" %>
+  <%= submit_tag "Search", :class => "btn btn-primary" %>
 <% end %>
+</div>
+<div id="doctor_results">
+<ol>
+  
+</ol>
 </div>
