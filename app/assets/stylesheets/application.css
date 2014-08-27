@@ -12,5 +12,6 @@
  *
  *= require bootstrap
  *= require searches
+ *= require doctors
  *= require_self
  */
