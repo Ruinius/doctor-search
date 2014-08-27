@@ -11,7 +11,6 @@ class SearchesController < ApplicationController
       if !params[:address].blank?
         search = Search.new(params[:address],params[:specialty])
       elsif !params[:zipcode].blank?
-        binding.pry
         search = Search.new(params[:zipcode],params[:specialty])  
       end
       doctors_json = search.nearby_doctors.collect do |doctor|
@@ -19,7 +18,8 @@ class SearchesController < ApplicationController
           :first_name => doctor.first_name,
           :last_name => doctor.last_name,
           :full_address => doctor.full_address,
-          :distance => doctor.distance.round(2)
+          :distance => doctor.distance.round(2),
+          :specialties => doctor.specialty_list
         }
       end
       render :json => doctors_json

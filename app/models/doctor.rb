@@ -11,4 +11,8 @@ class Doctor < ActiveRecord::Base
   def street_address
     unit.blank? ? street : "#{street} #{unit}"
   end
+
+  def specialty_list
+    self.specialties.collect {|s| s.name}.join(", ")
+  end
 end

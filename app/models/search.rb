@@ -9,7 +9,6 @@ class Search
     if @specialty.blank?
       Doctor.near(self.class.coordinates(@address), 5).sort_by {|d| d.distance}
     else
-      binding.pry
       Doctor.find_by(:specialty => @specialty).near(self.class.coordinates(@address), 5).sort_by {|d| d.distance}
     end
     
