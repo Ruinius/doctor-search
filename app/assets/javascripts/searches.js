@@ -1,9 +1,27 @@
 $( document ).ready(function(){
+  var $title = $('h2');
+  if ($title.text() == "New physician search"){
+    $('#doctor_results').hide();
+  }
+});
+
+$( document ).ready(function(){
+  $('#search_again').click(function(e){
+    e.preventDefault();
+    var $title = $('h2');
+    var $form = $('form');
+    $form.find('#address').text("");
+    $form.find('#zipcode').val("")
+    $title.text("New physician search");
+    $form.show();
+    $('#doctor_results').hide();
+  });
+});
+
+$( document ).ready(function(){
   $('.btn-primary').click(function(e){
     e.preventDefault();
     var $form = $(this).closest('form');
-    
-    //$form.closest('div').hide();
     $.ajax({
       url: $form.attr('action'),
       type: 'POST',
@@ -18,6 +36,7 @@ $( document ).ready(function(){
           $form.hide();
           var $title = $('h2');
           $title.html("Search results")
+
           var $results = $('#doctor_results > ol');
           $results.html("");
           for (var i = 0; i < response.length; i++){
@@ -26,6 +45,7 @@ $( document ).ready(function(){
             $results.append("<p>Distance: " + response[i]["distance"] + " miles</p>");
             $results.append("</li>")
           }
+          $('#doctor_results').show();
         }
       },
       failure: function(){alert('Could not perform search');}
