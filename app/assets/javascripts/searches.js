@@ -23,7 +23,6 @@ $( document ).ready(function(){
       dataType: 'script',
       success: function(d){
         var response = JSON.parse(d);
-        debugger;
         if (response[0].hasOwnProperty("notice")){
           $('div.container').prepend("<p class=notice>" + response[0]["notice"]);
         } else {
