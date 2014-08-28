@@ -3,6 +3,9 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'simplecov'
+SimpleCov.start
+
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -160,6 +163,7 @@ RSpec.configure do |config|
     #DoctorSpecialty.create({doctor_id: @doctor8.id, specialty_id: @specialty1.id})
     #DoctorSpecialty.create({doctor_id: @doctor9.id, specialty_id: @specialty1.id})
     #DoctorSpecialty.create({doctor_id: @doctor10.id, specialty_id: @specialty1.id})
+    DoctorSpecialty.create({doctor_id: @doctor2.id, specialty_id: @specialty1.id})
     DoctorSpecialty.create({doctor_id: @doctor2.id, specialty_id: @specialty2.id})
   end
 end

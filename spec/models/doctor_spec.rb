@@ -33,4 +33,9 @@ RSpec.describe Doctor, :type => :model do
   it "should have a full address" do
     expect(@doctor1.full_address).to eq('241 East 86th St Suite 100, New York, NY 10028')
   end
+
+  it "can display a list of specialties" do
+    expect(@doctor2.specialty_list).to eq('Primary Care, Endocrinology')
+  end
+
 end
