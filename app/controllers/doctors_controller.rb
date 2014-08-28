@@ -70,9 +70,8 @@ class DoctorsController < ApplicationController
     end
 
     def add_new_specialty
-      binding.pry
       if !params[:doctor][:new_specialty].strip.blank?
-        new_specialty = Specialty.create({:name => params[:doctor][:new_specialty].strip})
+        new_specialty = Specialty.find_or_create_by({:name => params[:doctor][:new_specialty].strip})
         params[:doctor][:specialty_ids] << new_specialty.id
       end
     end
