@@ -41,20 +41,20 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  DatabaseCleaner.strategy = :truncation
+  # DatabaseCleaner.strategy = :truncation
 
-  config.after(:all) do
-    DatabaseCleaner.clean
-  end
+  # config.after(:all) do
+  #   DatabaseCleaner.clean
+  # end
 
-  config.before(:each) do
+  config.before(:all) do
     @specialty1 = Specialty.create({name: 'Primary Care'})
     @specialty2 = Specialty.create({name: 'Endocrinology'})
 
     @doctor1 = Doctor.create({first_name: 'Nina', 
                last_name: 'Fallick', 
                street: '241 East 86th St',
-               unit: '',
+               unit: 'Suite 100',
                city: 'New York',
                state: 'NY',
                zip: '10028',
