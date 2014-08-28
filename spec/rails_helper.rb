@@ -44,11 +44,11 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  # DatabaseCleaner.strategy = :truncation
+  DatabaseCleaner.strategy = :truncation
 
-  # config.after(:all) do
-  #   DatabaseCleaner.clean
-  # end
+  config.after(:all) do
+    DatabaseCleaner.clean
+  end
 
   config.before(:all) do
     @specialty1 = Specialty.create({name: 'Primary Care'})
