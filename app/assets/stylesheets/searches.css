@@ -17,3 +17,7 @@ label {
 li {
   margin-top: 4px;
 }
+
+.no_results {
+  color: #d9230f;
+}
