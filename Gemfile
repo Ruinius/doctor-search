@@ -39,4 +39,8 @@ gem 'geocoder'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'pry', group: [:development, :test]
+group :development, :test do
+  gem 'pry'
+  gem 'rspec-rails', '3.0.2'
+  gem 'database_cleaner'
+end
