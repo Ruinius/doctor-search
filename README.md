@@ -20,6 +20,7 @@ Traditional Rails routing is used to navigate to the Doctor List page.
 
 ##Validation##
 Minor validation is performed, including verifying that an address is provided before running a search, and displaying a message if no results are returned. Additionally, if more than 10 doctors are retrieved, a message appears prompting the user to select a specialty.
+Though separate search boxes are provided for full address and zip code, they are interchangeable and either may be used. If information is supplied to both, the full address will receive higher precedence.
 
 ##Adding Data##
 New doctors can be registered by navigating to the Doctor List page and clicking the 'Add new doctor' link. New specialties may only be created through a doctor, by adding a new doctor or updating an existing one.
