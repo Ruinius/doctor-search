@@ -6,6 +6,10 @@
   width: 50%;
 }
 
+.container {
+  margin-bottom: 50px;
+}
+
 label {
   width: 160px;
 }
