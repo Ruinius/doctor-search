@@ -48,6 +48,17 @@ feature 'Doctor Search' do
       expect(Specialty.count).to eq(3)
     end
 
-    #it "should allow the specialty to be added to other doctors" do
+    it "should display the specialty for other doctors" do
+      visit edit_doctor_path(@doctor2)
+      expect(page).to have_content('Cardiology')
+    end
+
+    it "should allow the specialty to be added to other doctors" do
+      visit edit_doctor_path(@doctor2)
+      check 'Cardiology'
+      click_button 'Update Doctor'
+      @doctor2.reload
+      expect(@doctor2.specialty_list).to include('Cardiology')
+    end
   end
 end
