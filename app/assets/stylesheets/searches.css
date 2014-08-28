@@ -18,6 +18,10 @@ label {
   padding-left: 105px;
 }
 
+#specialty-tag {
+  padding-left: 40px;
+}
+
 li {
   margin-top: 4px;
 }

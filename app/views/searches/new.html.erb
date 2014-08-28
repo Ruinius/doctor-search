@@ -13,7 +13,7 @@
   <%= text_field_tag :zipcode %>
   </p>
   <p>
-  <%= label_tag :specialty, "Specialty (optional):"%>
+  <%= label_tag :specialty, "Specialty (optional):", :id => "specialty-tag" %>
   <%= collection_select(:specialty, :id, Specialty.all, :id, :name, :prompt => true) %>
   </p>
   <%= submit_tag "Search", :class => "btn btn-primary" %>
