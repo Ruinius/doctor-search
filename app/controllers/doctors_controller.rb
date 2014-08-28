@@ -69,6 +69,7 @@ class DoctorsController < ApplicationController
       @doctor = Doctor.find(params[:id])
     end
 
+    # Specialties can only be added through doctors
     def add_new_specialty
       if !params[:doctor][:new_specialty].strip.blank?
         new_specialty = Specialty.find_or_create_by({:name => params[:doctor][:new_specialty].strip})

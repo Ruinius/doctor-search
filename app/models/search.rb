@@ -9,11 +9,12 @@ class Search
   end
 
   def nearby_doctors()
-    # Doctors within 5 miles
+    # Doctors within 5 miles; results are sorted due to 'near' keyword
+    #display 10 but retrieve 11 to easily determine if there are more
     if @specialty_id.zero?
-      Doctor.near(self.class.coordinates(@address), 5).limit(11).sort_by {|d| d.distance}
+      Doctor.near(self.class.coordinates(@address), 5).limit(11)
     else
-      Doctor.joins(:specialties).where(:specialties => {:id => @specialty_id}).near(self.class.coordinates(@address), 5).limit(11).sort_by {|d| d.distance}
+      Doctor.joins(:specialties).where(:specialties => {:id => @specialty_id}).near(self.class.coordinates(@address), 5).limit(11)
     end
   end
 

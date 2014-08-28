@@ -3,6 +3,7 @@ $( document ).ready(function(){
     e.preventDefault();
     var $title = $('h2');
     var $form = $('form');
+    // Reset for new search
     $title.text("New physician search");
     $form.find('#address').val("");
     $form.find('#zipcode').val("");
@@ -24,19 +25,23 @@ $( document ).ready(function(){
       success: function(d){
         var response = JSON.parse(d);
         if (response.length == 0) {
+          // No doctors were found
           $('.no_results').remove();
           $('div.container').prepend("<p class=no_results><strong>No results found in your search area.</strong></p>");
         } else if (response[0].hasOwnProperty("notice")){
+          // Address was not provided
           $('.notice').remove();
           $('div.container').prepend("<p class=notice>" + response[0]["notice"]);
         } else {
           $('.no_results').remove();
           $('.notice').remove();
           $form.hide();
+          // Successful search; display results
           var $title = $('h2');
           $title.html("Search results");
           var $results = $('#doctor_results > ol');
           $results.html("");
+          // Only show closest 10 doctors on the results page
           var limit = Math.min(10, response.length);
           for (var i = 0; i < limit; i++){
             $results.append("<li>" + response[i]["last_name"] + ", " + response[i]["first_name"] + "</li>");
