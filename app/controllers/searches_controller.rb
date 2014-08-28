@@ -8,11 +8,7 @@ class SearchesController < ApplicationController
     if params[:address].blank? && params[:zipcode].blank?
       render :json => [{:notice => "Please enter an address"}]
     else
-      if !params[:address].blank?
-        search = Search.new(params[:address],params[:specialty][:id])
-      elsif !params[:zipcode].blank?
-        search = Search.new(params[:zipcode],params[:specialty][:id])  
-      end
+      search = Search.new(search_params)
       doctors_json = search.nearby_doctors.collect do |doctor|
         {
           :first_name => doctor.first_name,
@@ -24,6 +20,10 @@ class SearchesController < ApplicationController
       end
       render :json => doctors_json
     end
+  end
+
+  def search_params
+    params.permit(:address,:zipcode).merge(params.require(:specialty).permit(:id))
   end
 
 end

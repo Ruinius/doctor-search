@@ -33,10 +33,16 @@ $( document ).ready(function(){
 
           var $results = $('#doctor_results > ol');
           $results.html("");
-          for (var i = 0; i < response.length; i++){
+          var limit = Math.min(10, response.length)
+          for (var i = 0; i < limit; i++){
             $results.append("<li>" + response[i]["last_name"] + ", " + response[i]["first_name"] + "</li>");
+            $results.append("<p>Specialty: " + response[i]["specialties"])
             $results.append("<p>" + response[i]["full_address"] + "</p>");
             $results.append("<p>Distance: " + response[i]["distance"] + " miles</p>");
+          }
+          
+          if (response.length > 10 && $form.find('#specialty_id').val() == ""){
+            $('#doctor_results').prepend("<strong>More than 10 results were returned. Try selecting a specialty to narrow the results.</strong>")
           }
           $('#doctor_results').append("<a id=search_again href='/'>");
           $('#doctor_results > a').text("Search again");

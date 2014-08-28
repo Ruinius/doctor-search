@@ -13,3 +13,7 @@ label {
 #zip-code-tag {
   padding-left: 105px;
 }
+
+li {
+  margin-top: 4px;
+}
