@@ -41,7 +41,8 @@ gem 'geocoder'
 # gem 'debugger', group: [:development, :test]
 group :development, :test do
   gem 'pry'
-  gem 'rspec-rails', '3.0.2'
+  gem 'rspec-rails'
+  gem 'capybara'
   gem 'database_cleaner'
 end
 
