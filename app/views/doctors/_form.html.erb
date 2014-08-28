@@ -43,7 +43,14 @@
     <%= f.label :phone %><br>
     <%= f.text_field :phone %>
   </div>
-
+  <div class="field">
+    <%= f.label :specialties %><br>
+    <%= f.collection_check_boxes(:specialty_ids, Specialty.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <label for="new_specialty">Add new:</label><br>
+    <input id="new_specialty" name="doctor[new_specialty]" type="text">
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

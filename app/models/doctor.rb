@@ -3,6 +3,7 @@ class Doctor < ActiveRecord::Base
   has_many :specialties, through: :doctor_specialties
   geocoded_by :full_address
   after_validation :geocode
+  accepts_nested_attributes_for :doctor_specialties
   
   def full_address
     "#{street_address}, #{city}, #{state} #{zip}"
