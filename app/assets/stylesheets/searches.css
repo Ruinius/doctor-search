@@ -10,16 +10,24 @@
   margin-bottom: 50px;
 }
 
-label {
-  width: 160px;
+@media (min-width: 1px) {
+  label {
+    width: 235px;
+  }
 }
 
-#zip-code-tag {
-  padding-left: 105px;
-}
+@media (min-width: 718px) {
+  #zip-code-tag {
+    padding-left: 105px;
+  }
 
-#specialty-tag {
-  padding-left: 40px;
+  #specialty-tag {
+    padding-left: 40px;
+  }
+
+  label {
+    width: 160px;
+  }
 }
 
 li {
