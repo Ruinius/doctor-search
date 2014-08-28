@@ -4,6 +4,7 @@ Doctor Search is a simple Ruby on Rails app that uses a patient's address to sea
 
 ##Setup and Database Initialization##
 After forking and cloning this repository, run `bundle install` from the terminal to install any missing our out of date gems. This application uses Sqlite3 as the database. To initialize the database, run `rake db:migrate`.
+Seed data can be added to the database by running `rake db:seed`.
 
 ##Geocoding##
 The ruby [Geocoder gem](https://github.com/alexreisner/geocoder) is used translate a doctor's address into latitude and longitude coordinates on creation. When a search is performed, the search address is similarly geocoded, then the 'near' method (a location-aware database query) is used to locate doctors within 5 miles of the address.
